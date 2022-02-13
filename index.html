@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #navbar {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 15px;
+        border: 1px solid black;
+        width: 100%;
+      }
+      #navbar > a:nth-child(2) {
+        margin-right: 5%;
+      }
+      #navbar > a {
+        padding: 0.5%;
+        color: black;
+        text-decoration: none;
+      }
+      #navbar + h1 {
+        text-align: center;
+      }
+      img {
+        width: 90%;
+        height: 550px;
+        margin-left: 5%;
+      }
+      #container {
+        display: grid;
+        grid-gap: 1%;
+        grid-template-columns: auto auto auto;
+        text-align: center;
+        width: 100%;
+      }
+      h2 {
+        background-color: rgba(145, 142, 142, 0.822);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <a id="home" href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </div>
+    <h1>Home Page</h1>
+    <hr />
+    <div>
+      <img src="" id="img" />
+    </div>
+    <hr />
+    <div id="container">
+      <div>
+        <img src="" id="img1" />
+        <h2 id="name1"></h2>
+        <p id="release_date1"></p>
+        <p id="IMDB_rating1"></p>
+      </div>
+      <div>
+        <img src="" id="img2" />
+        <h2 id="name2"></h2>
+        <p id="release_date2"></p>
+        <p id="IMDB_rating2"></p>
+      </div>
+      <div>
+        <img src="" id="img3" />
+        <h2 id="name3"></h2>
+        <p id="release_date3"></p>
+        <p id="IMDB_rating3"></p>
+      </div>
+    </div>
+    <script>
+      var images = [
+        "https://wallpapercave.com/wp/wp8297332.jpg",
+        "https://flxt.tmsimg.com/assets/p17580215_b_h8_aa.jpg",
+        "https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/01/stranger-things-hogwarts-houses.jpg",
+        "https://cdn.wallpapersafari.com/36/94/y9zG8j.png",
+      ];
+      var movies = [
+        {
+          name: "Spider-Man: No Way Home",
+          release_date: "Dec 17, 2021",
+          poster:
+            "https://terrigen-cdn-dev.marvel.com/content/prod/1x/snh_online_6072x9000_posed_01.jpg",
+          IMDB_rating: "8.7",
+        },
+        {
+          name: "Jai Bhim",
+          release_date: "Nov 02, 2021",
+          poster:
+            "https://scontent.fdel27-5.fna.fbcdn.net/v/t39.30808-6/230650458_1498690770474647_2242080765096189475_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=g4H_fN3RRBMAX9J7Ojc&_nc_ht=scontent.fdel27-5.fna&oh=00_AT9JGxhsYV2Dw2_ai1min7IMi7KTJIBvkMTnGFNWZq5Bfw&oe=620D8EB7",
+          IMDB_rating: "9.3",
+        },
+        {
+          name: "Pushpa: The Rise - Part 1",
+          release_date: "Dec 17, 2021",
+          poster:
+            "https://cdn.bollywoodmdb.com/movies/largethumb/2021/pushpa/pushpa-poster-4.jpg",
+          IMDB_rating: "7.9",
+        },
+        {
+          name: "Pokémon: The First Movie ",
+          release_date: "Nov 10, 1999",
+          poster:
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1183360314l/1407443._SX318_.jpg",
+          IMDB_rating: "6.3",
+        },
+        {
+          name: "M.S. Dhoni: The Untold Story",
+          release_date: "Sep 30, 2016",
+          poster:
+            "https://mir-s3-cdn-cf.behance.net/projects/404/3bf558105718695.Y3JvcCw3NjUsNTk4LDIxNyw4Nw.jpg",
+          IMDB_rating: "8.0",
+        },
+        {
+          name: "Chhichhore",
+          release_date: "Dec 17, 2021",
+          poster:
+            "https://upload.wikimedia.org/wikipedia/en/3/3d/Chhichhore_Poster.jpg",
+          IMDB_rating: "8.3",
+        },
+        {
+          name: "Aranyak",
+          release_date: "Dec 10, 2021",
+          poster:
+            "https://m.media-amazon.com/images/M/MV5BYjQ2NDVjYjItNmIxNC00NDQ1LTgzOTctM2ExMTA0ZjlhZTgxXkEyXkFqcGdeQXVyNjc3MzU4Mzc@._V1_.jpg",
+          IMDB_rating: "7.9",
+        },
+        {
+          name: "Shershaah",
+          release_date: "Aug 12, 2021",
+          poster:
+            "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/2b0f4d44fe146fd28a92fb1750e9020fa9b7567452b99b4d9139a914345ac699._RI_V_TTW_.jpg",
+          IMDB_rating: "8.7",
+        },
+        {
+          name: "Titanic",
+          release_date: "Dec 19, 1997",
+          poster: "https://m.media-amazon.com/images/I/51mTtUGvUCL.jpg",
+          IMDB_rating: "7.8",
+        },
+      ];
+      let slideshowImgElement = document.getElementById("img");
+      var i = 0;
+      setInterval(function () {
+        if (i === images.length) {
+          i = 0;
+        }
+        slideshowImgElement.src = images[i];
+        i++;
+      }, 2000);
+
+      let m1 = document.getElementById("img1");
+      let m2 = document.getElementById("img2");
+      let m3 = document.getElementById("img3");
+      let n1 = document.getElementById("name1");
+      let n2 = document.getElementById("name2");
+      let n3 = document.getElementById("name3");
+      let r1 = document.getElementById("release_date1");
+      let r2 = document.getElementById("release_date2");
+      let r3 = document.getElementById("release_date3");
+      let imdb1 = document.getElementById("IMDB_rating1");
+      let imdb2 = document.getElementById("IMDB_rating2");
+      let imdb3 = document.getElementById("IMDB_rating3");
+      let j = 0;
+      setInterval(function () {
+        if (j === 9) {
+          j = 0;
+        }
+        m1.src = movies[j].poster;
+        n1.textContent = movies[j].name;
+        r1.textContent = "Release Date : " + movies[j].release_date;
+        imdb1.textContent = "IMDB Rating : " + movies[j].IMDB_rating;
+        m2.src = movies[j + 1].poster;
+        n2.textContent = movies[j + 1].name;
+        r2.textContent = "Release Date : " + movies[j + 1].release_date;
+        imdb2.textContent = "IMDB Rating : " + movies[j].IMDB_rating;
+        m3.src = movies[j + 2].poster;
+        n3.textContent = movies[j + 2].name;
+        r3.textContent = "Release Date : " + movies[j + 2].release_date;
+        imdb3.textContent = "IMDB Rating : " + movies[j + 2].IMDB_rating;
+        j += 3;
+      }, 3000);
+    </script>
+  </body>
+</html>
